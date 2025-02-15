@@ -44,6 +44,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddHttpClient<IAzureSpeechService, AzureSpeechService>();
 builder.Services.AddScoped<IAzureSpeechService, AzureSpeechService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAzureTableStorageService, AzureTableStorageService>();
 
 var app = builder.Build();
 

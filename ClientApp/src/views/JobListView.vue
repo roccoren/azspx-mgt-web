@@ -50,7 +50,7 @@
         <div class="mt-4 flex justify-between items-center">
           <router-link
             v-if="job.id"
-            :to="{ name: 'job-details', params: { id: job.id }}"
+            :to="{ name: 'speech-job-details', params: { id: job.id }}"
             class="text-blue-600 hover:text-blue-800"
           >
             View Details

@@ -3,27 +3,38 @@ import { useAuthStore } from '../stores/auth';
 import JobListView from '../views/JobListView.vue';
 import JobDetailsView from '../views/JobDetailsView.vue';
 import LoginView from '../views/LoginView.vue';
+import TableStorageView from '../views/TableStorageView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
-      name: 'jobs',
+      path: '/speech',
+      name: 'speech',
       component: JobListView,
       meta: { requiresAuth: true }
     },
     {
-      path: '/job/:id',
-      name: 'job-details',
+      path: '/speech/job/:id',
+      name: 'speech-job-details',
       component: JobDetailsView,
       props: true,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/tables',
+      name: 'tables',
+      component: TableStorageView,
       meta: { requiresAuth: true }
     },
     {
       path: '/login',
       name: 'login',
       component: LoginView
+    },
+    {
+      path: '/',
+      redirect: '/speech'
     }
   ]
 });
