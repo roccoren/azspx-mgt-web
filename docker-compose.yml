@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    ports:
+      - "5000:80"
+      - "5001:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/cert/localhost.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=your-password
+      - AzureSpeech__SubscriptionKey=${AZURE_SPEECH_KEY}
+      - AzureSpeech__Region=${AZURE_SPEECH_REGION}
+      - Jwt__Key=${JWT_SECRET_KEY}
+      - Jwt__Issuer=https://localhost:5001
+      - Jwt__Audience=https://localhost:5001
+      - Jwt__ExpiryInDays=7
+      - Cors__Origins__0=http://localhost:5173
+    volumes:
+      - .:/app
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
