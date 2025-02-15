@@ -1,0 +1,28 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "AzureSpeech": {
+    "SubscriptionKey": "your-azure-speech-subscription-key",
+    "Region": "your-azure-speech-region"
+  },
+  "AzureTableStorage": {
+    "AccountUrl": "your-storage-account-url",
+    "AccountName": "your-storage-account-name"
+  },
+  "Jwt": {
+    "Key": "your-secure-jwt-key-min-32-chars-here",
+    "Issuer": "https://your-domain",
+    "Audience": "https://your-domain",
+    "ExpiryInDays": 7
+  },
+  "Cors": {
+    "Origins": [
+      "http://localhost:5173"
+    ]
+  }
+}

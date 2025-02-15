@@ -30,5 +30,6 @@ yarn-error.log*
 Thumbs.db
 
 # Project specific
+appsettings.json
 appsettings.Development.json
 *.Development.json
